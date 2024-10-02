@@ -1,0 +1,58 @@
+﻿
+@{
+    ViewBag.Title = "Create Image Clothes";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Create Image Clothes</h2>
+
+<form action="/images/create" method="post">
+    <div class="row">
+        <div class="col-md-10">
+            <label for="ClothesID">Clothes Name</label>
+            <select class="form-control" id="ClothesID" name="ClothesID" required>
+                <option value="">Please select...</option>
+                @foreach (var item in ViewBag.Clothes)
+                {
+                    <option value="@item.ClothesID">@item.ClothesName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-10">
+            <label for="ColorID">Color Name</label>
+            <select class="form-control" id="ColorID" name="ColorID" required>
+                <option value="">Please select...</option>
+                @foreach (var item in ViewBag.Colors)
+                {
+                    <option value="@item.ColorID">@item.ColorName</option>
+                }
+            </select>
+        </div>
+        <div class="col-md-10">
+            <label for="ImageName">Image Name</label>
+            <input type="text"
+                   class="form-control"
+                   id="ImageName"
+                   name="ImageName"
+                   placeholder="Image Name" />
+        </div>
+        <div class="col-md-10">
+            <label for="MainImage">Main Image</label>
+            <input type="file" class="form-control" id="MainImage" name="MainImage" required />
+        </div>
+        <div class="col-md-10">
+            <label for="SecondaryImage1">Secondary Image 1</label>
+            <input type="file" class="form-control" id="SecondaryImage1" name="SecondaryImage1" />
+        </div>
+        <div class="col-md-10">
+            <label for="SecondaryImage2">Secondary Image 2</label>
+            <input type="file" class="form-control" id="SecondaryImage2" name="SecondaryImage2" />
+        </div>
+        <div class="col-md-10">
+            <label for="SecondaryImage3">Secondary Image 3</label>
+            <input type="file" class="form-control" id="SecondaryImage3" name="SecondaryImage3" />
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a href="/images/index" class="btn btn-dark">Cancel</a>
+</form>

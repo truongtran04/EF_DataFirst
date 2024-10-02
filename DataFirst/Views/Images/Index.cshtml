@@ -1,0 +1,35 @@
+﻿@model List<DataFirst.Models.Image>
+@{
+    ViewBag.Title = "Image";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Image</h2>
+<a href="/images/create">Create Image</a>
+<table class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Clothes Name</th>
+            <th>Color Image</th>
+            <th>Image Name</th>
+            <th>Main Image</th>
+            <th>SecondaryImage 1</th>
+            <th>SecondaryImage 2</th>
+            <th>SecondaryImage 3</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach(var item in Model)
+            {
+                <tr>
+                    <td>@item.Cloth.ClothesName</td>
+                    <td>@item.Color.ColorName</td>
+                    <td>@item.ImageName</td>
+                    <td><img src="@item.MainImage" alt="Main Image" class="img-fluid"/></td>
+                    <td><img src="@item.SecondaryImage1" alt="Secondary Image 1" class="img-fluid"/></td>
+                    <td><img src="@item.SecondaryImage2" alt="Secondary Image 2" class="img-fluid"/></td>
+                    <td><img src="@item.SecondaryImage3" alt="Secondary Image 3" class="img-fluid"/></td>
+                </tr>
+            }
+    </tbody>
+</table>

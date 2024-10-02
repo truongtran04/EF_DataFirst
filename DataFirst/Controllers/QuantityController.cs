@@ -31,24 +31,29 @@ namespace DataFirst.Controllers
 
         // POST: Quantity/Create
         [HttpPost]
-        public ActionResult Create(string ClothesID, string ColorID, List<Clothes_Color_Size> Sizes)
+        public ActionResult Create(string ClothesID, List<ColorSizesViewModel> Colors)
         {
             TESTEntities db = new TESTEntities();
 
-            foreach (var item in Sizes)
+            foreach (var color in Colors)
             {
-                var clothesColorSize = new Clothes_Color_Size
+                foreach (var size in color.Sizes)
                 {
-                    ClothesID = ClothesID,
-                    ColorID = ColorID,
-                    SizeID = item.SizeID,
-                    Quantity = item.Quantity
-                };
-                db.Clothes_Color_Size.Add(clothesColorSize);
+                    var clothesColorSize = new Clothes_Color_Size
+                    {
+                        ClothesID = ClothesID,
+                        ColorID = color.ColorID,
+                        SizeID = size.SizeID,
+                        Quantity = size.Quantity
+                    };
+                    db.Clothes_Color_Size.Add(clothesColorSize);
+                }
             }
 
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+
     }
 }

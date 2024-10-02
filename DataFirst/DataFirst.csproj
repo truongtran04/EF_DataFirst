@@ -113,6 +113,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Global.asax" />
+    <Content Include="Images\anhdemo.png" />
     <Content Include="Models\Shopping.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>Shopping.Context.cs</LastGenOutput>
@@ -135,6 +136,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="Controllers\ClothesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\ImagesController.cs" />
     <Compile Include="Controllers\QuantityController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -157,10 +159,10 @@
     <Compile Include="Models\Color.cs">
       <DependentUpon>Shopping.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ColorSizesViewModel.cs" />
     <Compile Include="Models\Image.cs">
       <DependentUpon>Shopping.tt</DependentUpon>
     </Compile>
-    <Compile Include="Models\QuantityClothes.cs" />
     <Compile Include="Models\Shopping.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -219,6 +221,8 @@
     <Content Include="Views\Clothes\Create.cshtml" />
     <Content Include="Views\Home\Index.cshtml" />
     <Content Include="Views\Quantity\Create.cshtml" />
+    <Content Include="Views\Images\Index.cshtml" />
+    <Content Include="Views\Images\Create.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

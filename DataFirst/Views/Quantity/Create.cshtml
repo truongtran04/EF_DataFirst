@@ -20,38 +20,12 @@
         </div>
 
         <div class="col-md-10">
-            <label for="ColorID">Color Name</label>
-            <select class="form-control" id="ColorID" name="ColorID" required>
-                <option value="">Please select...</option>
-                @foreach (var item in ViewBag.Colors)
-                {
-                    <option value="@item.ColorID">@item.ColorName</option>
-                }
-            </select>
+            <label for="color-count">Enter Number of Colors</label>
+            <input type="number" class="form-control" id="color-count" placeholder="Enter number of colors" required />
         </div>
 
-        <div class="col-md-10">
-            <label>Sizes and Quantities</label>
-            <div id="size-quantity-list">
-                <div class="row mb-2">
-                    <div class="col-md-5">
-                        <select class="form-control" name="Sizes[0].SizeID" required>
-                            <option value="">Please select size...</option>
-                            @foreach (var size in ViewBag.Sizes)
-                            {
-                                <option value="@size.SizeID">@size.SizeName</option>
-                            }
-                        </select>
-                    </div>
-                    <div class="col-md-5">
-                        <input type="number" class="form-control" name="Sizes[0].Quantity" placeholder="Quantity" required />
-                    </div>
-                    <div class="col-md-2">
-                        <button type="button" class="btn btn-danger remove-row">Remove</button>
-                    </div>
-                </div>
-            </div>
-            <button type="button" id="add-row" class="btn btn-primary">Add More Sizes</button>
+        <div class="col-md-10" id="color-sections">
+            <!-- Sections for colors, sizes and quantities will be dynamically added here -->
         </div>
     </div>
 
@@ -60,35 +34,83 @@
 </form>
 
 <script>
-    let sizeIndex = 1;
-    document.getElementById('add-row').addEventListener('click', function() {
-        let newRow = `
-            <div class="row mb-2">
-                <div class="col-md-5">
-                    <select class="form-control" name="Sizes[${sizeIndex}].SizeID" required>
-                        <option value="">Please select size...</option>
-                        @foreach (var size in ViewBag.Sizes)
-                        {
-                            <option value="@size.SizeID">@size.SizeName</option>
-                        }
-                    </select>
+    document.getElementById('color-count').addEventListener('change', function() {
+        let colorCount = parseInt(this.value);
+        let colorSections = document.getElementById('color-sections');
+        colorSections.innerHTML = ''; // Clear any existing fields
+
+        for (let colorIndex = 0; colorIndex < colorCount; colorIndex++) {
+            let colorSection = `
+                <div class="row m-3 color-section">
+                    <div class="col-md-10">
+                        <label for="ColorID-${colorIndex}">Color Name ${colorIndex + 1}</label>
+                        <select class="form-control" id="ColorID-${colorIndex}" name="Colors[${colorIndex}].ColorID" required>
+                            <option value="">Please select...</option>
+                            @foreach (var color in ViewBag.Colors)
+                            {
+                                <option value="@color.ColorID">@color.ColorName</option>
+                            }
+                        </select>
+                    </div>
+
+                    <div class="col-md-10">
+                        <label>Sizes and Quantities for Color ${colorIndex + 1}</label>
+                        <div id="size-quantity-list-${colorIndex}">
+                            <div class="row mb-2">
+                                <div class="col-md-5">
+                                    <select class="form-control" name="Colors[${colorIndex}].Sizes[0].SizeID" required>
+                                        <option value="">Please select size...</option>
+                                        @foreach (var size in ViewBag.Sizes)
+                                        {
+                                            <option value="@size.SizeID">@size.SizeName</option>
+                                        }
+                                    </select>
+                                </div>
+                                <div class="col-md-5">
+                                    <input type="number" class="form-control" name="Colors[${colorIndex}].Sizes[0].Quantity" placeholder="Quantity" required />
+                                </div>
+                                <div class="col-md-2">
+                                    <button type="button" class="btn btn-danger remove-row">Remove</button>
+                                </div>
+                            </div>
+                        </div>
+                        <button type="button" id="add-row-${colorIndex}" class="btn btn-primary add-size-row">Add More Sizes</button>
+                    </div>
                 </div>
-                <div class="col-md-5">
-                    <input type="number" class="form-control" name="Sizes[${sizeIndex}].Quantity" placeholder="Quantity" required />
-                </div>
-                <div class="col-md-2">
-                    <button type="button" class="btn btn-danger remove-row">Remove</button>
-                </div>
-            </div>`;
-        document.getElementById('size-quantity-list').insertAdjacentHTML('beforeend', newRow);
-        sizeIndex++;
+            `;
+
+            colorSections.insertAdjacentHTML('beforeend', colorSection);
+
+            // Add event listener to add more sizes for this color
+            document.getElementById(`add-row-${colorIndex}`).addEventListener('click', function() {
+                let sizeIndex = document.querySelectorAll(`#size-quantity-list-${colorIndex} .row`).length;
+                let newSizeRow = `
+                    <div class="row mb-2">
+                        <div class="col-md-5">
+                            <select class="form-control" name="Colors[${colorIndex}].Sizes[${sizeIndex}].SizeID" required>
+                                <option value="">Please select size...</option>
+                                @foreach (var size in ViewBag.Sizes)
+                                {
+                                    <option value="@size.SizeID">@size.SizeName</option>
+                                }
+                            </select>
+                        </div>
+                        <div class="col-md-5">
+                            <input type="number" class="form-control" name="Colors[${colorIndex}].Sizes[${sizeIndex}].Quantity" placeholder="Quantity" required />
+                        </div>
+                        <div class="col-md-2">
+                            <button type="button" class="btn btn-danger remove-row">Remove</button>
+                        </div>
+                    </div>`;
+                document.getElementById(`size-quantity-list-${colorIndex}`).insertAdjacentHTML('beforeend', newSizeRow);
+            });
+        }
     });
 
-    document.getElementById('size-quantity-list').addEventListener('click', function(e) {
+    document.getElementById('color-sections').addEventListener('click', function(e) {
         if (e.target && e.target.classList.contains('remove-row')) {
             e.target.closest('.row').remove();
         }
     });
 </script>
-
 
