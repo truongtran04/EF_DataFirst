@@ -1,0 +1,31 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+</head>
+<body>
+    <header class="bg-light">
+        <nav class="navbar navbar-expand-md navbar-light">
+            <a class="navbar-brand" href="/home/index">LOGO</a>
+            <ul class="navbar-nav me-auto">
+                <li class="nav-item">
+                    <a class="nav-link" href="/clothes/index">Clothes</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link" href="/quantity/index">Quantity Clothes</a>
+                </li>
+            </ul>
+        </nav>
+    </header>
+    <main>
+        <div class="">
+            @RenderBody()
+        </div>
+    </main>
+
+</body>
+</html>

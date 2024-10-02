@@ -1,0 +1,37 @@
+﻿@model List<DataFirst.Models.Cloth>
+@{
+    ViewBag.Title = "Clothes";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Clothes</h2>
+<a href="/clothes/create">Create New Clothes</a>
+<table class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <th>Clothes Name</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Fabric</th>
+            <th>User Instructions</th>
+            <th>Category</th>
+            <th>Clothing Type</th>
+            <th>Clothing Style</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.ClothesName</td>
+                <td>@item.Price</td>
+                <td>@item.Description</td>
+                <td>@item.Fabric</td>
+                <td>@item.UserInstructions</td>
+                <td>@item.Category.CategoryName</td>
+                <td>@item.ClothingType.ClothingTypeName</td>
+                <td>@item.ClothingStyle.ClothingStyleName</td>
+            </tr>
+        }
+    </tbody>
+</table>

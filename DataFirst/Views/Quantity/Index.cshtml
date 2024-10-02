@@ -1,0 +1,29 @@
+﻿@model List<DataFirst.Models.Clothes_Color_Size>
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Quantity</h2>
+<a href="/quantity/create">Input quantity</a>
+<table class="table table-bordered">
+    <thead class="table-light">
+        <tr>
+            <td>Clothes Name</td>
+            <td>Color</td>
+            <td>Size</td>
+            <td>Quanlity</td>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>@item.Cloth.ClothesName</td>
+                <td>@item.Color.ColorName</td>
+                <td>@item.Size.SizeName</td>
+                <td>@item.Quantity</td>
+            </tr>
+        }
+    </tbody>
+</table>

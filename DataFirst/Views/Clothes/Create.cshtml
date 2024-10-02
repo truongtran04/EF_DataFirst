@@ -1,0 +1,96 @@
+﻿
+@{
+    ViewBag.Title = "Create";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<h2>Create New Clothes</h2>
+<form class="ms-2" action="/clothes/create" method="post">
+    <div class="row mb-4">
+        <div class="col-md-10">
+            <label for="ClothesName">ClothesName</label>
+            <input type="text"
+                   class="form-control"
+                   id="ClothesName"
+                   name="ClothesName"
+                   placeholder="Clothes Name" />
+        </div>
+        <div class="col-md-10">
+            <label for="Price">Price</label>
+            <input type="number"
+                   class="form-control"
+                   id="Price"
+                   name="Price"
+                   placeholder="Price" />
+        </div>
+        <div class="col-md-10">
+            <label for="Description">Description</label>
+            <input type="text"
+                   class="form-control"
+                   id="Description"
+                   name="Description"
+                   placeholder="Description" />
+        </div>
+        <div class="col-md-10">
+            <label for="Fabric">Fabric</label>
+            <input type="text"
+                   class="form-control"
+                   id="Fabric"
+                   name="Fabric"
+                   placeholder="Fabric" />
+        </div>
+        <div class="col-md-10">
+            <label for="UserInstructions">User Instructions</label>
+            <input type="text"
+                   class="form-control"
+                   id="UserInstructions"
+                   name="UserInstructions"
+                   placeholder="User Instructions" />
+        </div>
+        <div class="col-md-10">
+            <label for="CategoryID">Category Name</label>
+            <select class="form-control"
+                    id="CategoryID"
+                    name="CategoryID">
+                <option value="">Please Select...</option>
+                @foreach (var item in ViewBag.Categories)
+                {
+                    <option value="@item.CategoryID">
+                        @item.CategoryName
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-10">
+            <label for="ClothingTypeID">Clothing Type Name</label>
+            <select class="form-control"
+                    id="ClothingTypeID"
+                    name="ClothingTypeID">
+                <option value="">Please Select...</option>
+                @foreach (var item in ViewBag.ClothingTypes)
+                {
+                    <option value="@item.ClothingTypeID">
+                        @item.ClothingTypeName
+                    </option>
+                }
+            </select>
+        </div>
+        <div class="col-md-10">
+            <label for="ClothingStyleID">Clothing Style Name</label>
+            <select class="form-control"
+                    id="ClothingStyleID"
+                    name="ClothingStyleID">
+                <option value="">Please Select...</option>
+                @foreach (var item in ViewBag.ClothingStyles)
+                {
+                    <option value="@item.ClothingStyleID">
+                        @item.ClothingStyleName
+                    </option>
+                }
+            </select>
+        </div>
+    </div>
+    <button type="submit" class="btn btn-success">Create</button>
+    <a class="btn btn-dark" href="/clothes/index">Cancel</a>
+</form>
+
