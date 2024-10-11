@@ -1,0 +1,27 @@
+﻿<div class="row">
+    <!-- First Column -->
+    <div class="col-6">
+        <ul class="navbar-nav">
+            @for (int i = 0; i < ViewBag.ClothingTypes.Count / 2; i++)
+            {
+                <li class="nav-link custom-nav-item">
+                    <a href="#" class="nav-item">@ViewBag.ClothingTypes[i].ClothingTypeName</a>
+                </li>
+            }
+        </ul>
+    </div>
+
+    <!-- Second Column -->
+    <div class="col-6">
+        <ul class="navbar-nav">
+            @for (int i = ViewBag.ClothingTypes.Count / 2; i < ViewBag.ClothingTypes.Count; i++)
+            {
+                <li class="nav-link custom-nav-item">
+                    <a href="#" class="nav-item">@ViewBag.ClothingTypes[i].ClothingTypeName</a>
+                </li>
+            }
+        </ul>
+    </div>
+</div>
+
+

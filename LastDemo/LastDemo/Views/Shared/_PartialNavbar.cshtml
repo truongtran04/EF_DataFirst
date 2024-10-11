@@ -1,0 +1,17 @@
+﻿<ul class="navbar-nav">
+    @foreach (var category in ViewBag.Categories)
+    {
+        <li class="nav-item">
+            <a href="#" class="nav-link text-uppercase fw-bold pb-2 hover-item">
+                <span>@category.CategoryName</span> <!-- Hiển thị tên danh mục -->
+            </a>
+        </li>
+    }
+    <li class="nav-item">
+        <a href="" class="nav-link text-uppercase fw-bold pb-2">
+            <span>Sản phẩm mới</span>
+        </a>
+    </li>
+</ul>
+
+

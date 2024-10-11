@@ -1,0 +1,121 @@
+﻿@model LastDemo.Models.Cloth
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>Cloth</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.ClothesName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClothesName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Price)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Price)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PriceSale)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PriceSale)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Fabric)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fabric)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UserInstructions)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UserInstructions)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.UpdatedAt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.UpdatedAt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.IsDeleted)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.IsDeleted)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Category.CategoryName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Category.CategoryName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClothingType.ClothingTypeName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClothingType.ClothingTypeName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClothingStyle.ClothingStyleName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClothingStyle.ClothingStyleName)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,161 @@
+﻿<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>@ViewBag.Title</title>
+    <meta charset="utf-8" />
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    <link href="~/Content/css/LayoutHome.css" rel="stylesheet" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</head>
+<body>
+    <header class="header bg-white fixed-top">
+        <nav class="navbar navbar-expand-lg">
+            <div class="container p-0">
+                <div class="navbar-brand ms-3">
+                    <a href="#">
+                        <img src="~/Content/images/logo_2.png" alt="Logo" style="height: 40px;">
+                    </a>
+                </div>
+                <div class="collapse navbar-collapse">
+                    @Html.Partial("_PartialNavbar")
+                </div>
+                <div class="d-flex flex-row me-3">
+                    <div class="m-auto me-3" id="searchBar">
+                        <a class="nav-link" href="#">
+                            <input class="form-control p-0 ps-2" placeholder="Tìm kiếm">
+                        </a>
+                    </div>
+                    <ul class="navbar-nav d-flex flex-row">
+                        <li class="nav-item custom-nav-item">
+                            <a href="" class="nav-link custom-nav-link p-0">
+                                <i class="bi bi-person custom-icon"></i>
+                                <span>Tài khoản</span>
+                            </a>
+                        </li>
+                        <li class="nav-item custom-nav-item">
+                            <a href="" class="nav-link custom-nav-link p-0 ms-2">
+                                <i class="bi bi-cart2 custom-icon"></i>
+                                <span>Giỏ hàng</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+        <div class="sub-menu bg-white border-top p-0">
+            <div class="container">
+                <div class="row">
+                    <div class="row col-2 border-end p-0 m-0">
+                        <div class="p-0 mt-5 ms-5">
+                            <h6>Hàng mới về</h6>
+                            <ul class="navbar-nav">
+                                <li class="nav-link custom-nav-item">
+                                    <a href="" class="nav-item">Hàng mới về</a>
+                                </li>
+                                <li class="nav-link custom-nav-item">
+                                    <a href="" class="nav-item">Statement Slimplicity</a>
+                                </li>
+                                <li class="nav-link custom-nav-item">
+                                    <a href="" class="nav-item">Beyond the beach</a>
+                                </li>
+                            </ul>
+                            <h6 class="mt-5">Nổi bật</h6>
+                            <ul class="navbar-nav">
+                                <li class="nav-link custom-nav-item">
+                                    <a href="" class="nav-item">Giá tốt</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-5 border-end">
+                        <div class="ms-5">
+                            <h6 class="mt-5">Danh mục sản phẩm</h6>
+                            <div class="row mb-5">
+                                @Html.Partial("_PartialMenuNavbar")
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-5">
+                        <div class="mt-5 d-flex">
+                            <div class="col-4 ms-5">
+                                <h6>Phụ kiện</h6>
+                                <ul class="navbar-nav">
+                                    <li class="nav-link custom-nav-item">
+                                        <a href="" class="nav-item">Chăn</a>
+                                    </li>
+                                    <li class="nav-link custom-nav-item">
+                                        <a href="" class="nav-item">Khăn mặt</a>
+                                    </li>
+                                    <li class="nav-link custom-nav-item">
+                                        <a href="" class="nav-item">Khăn tắm</a>
+                                    </li>
+                                </ul>
+                            </div>
+                            <div class="col-8">
+                                <!-- HTML -->
+                                <ul class="navbar-nav d-flex flex-row">
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            <img src="/images/mgmn7.webp" alt="" class="img-submenu me-2">
+                                        </a>
+                                    </li>
+                                    <li class="nav-item">
+                                        <a href="" class="nav-link">
+                                            <img src="/images/mgmn7.webp" alt="" class="img-submenu">
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <script>
+            const targetLinks = document.querySelectorAll('.hover-item'); // Lấy các mục Nữ, Nam, Bé gái, Bé trai
+            const outsideDiv = document.querySelector('.sub-menu'); // Thẻ div có class sub-menu
+
+            function isAnyHovering() {
+                // Kiểm tra nếu có bất kỳ mục nào đang được hover
+                return Array.from(targetLinks).some(link => link.matches(':hover'));
+            }
+
+            targetLinks.forEach(targetLink => {
+                targetLink.addEventListener('mouseenter', function () {
+                    outsideDiv.classList.add('show'); // Thêm class để hiển thị sub-menu khi hover
+                });
+
+                targetLink.addEventListener('mouseleave', function () {
+                    setTimeout(() => {
+                        // Nếu không hover vào sub-menu và không hover vào bất kỳ link nào
+                        if (!outsideDiv.matches(':hover') && !isAnyHovering()) {
+                            outsideDiv.classList.remove('show'); // Xóa class show nếu không còn hover vào mục nào
+                        }
+                    }, 100);
+                });
+            });
+
+            outsideDiv.addEventListener('mouseenter', function () {
+                outsideDiv.classList.add('show'); // Giữ sub-menu mở khi hover vào
+            });
+
+            outsideDiv.addEventListener('mouseleave', function () {
+                setTimeout(() => {
+                    // Nếu không hover vào sub-menu và không hover vào bất kỳ link nào
+                    if (!outsideDiv.matches(':hover') && !isAnyHovering()) {
+                        outsideDiv.classList.remove('show'); // Đóng sub-menu khi chuột rời đi
+                    }
+                }, 100);
+            });
+        </script>
+    </header>
+    <main class="main bg-light" style="height: 5000px;">
+        <div>
+            @RenderBody()
+        </div>
+    </main>
+
+</body>
+</html>

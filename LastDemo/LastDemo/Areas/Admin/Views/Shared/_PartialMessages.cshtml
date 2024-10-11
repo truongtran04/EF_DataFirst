@@ -1,0 +1,7 @@
+﻿@if (TempData.ContainsKey("messages"))
+{
+    LastDemo.Library.NotiMessage messages = (LastDemo.Library.NotiMessage) TempData["messages"];
+    <div class="alert alert-@messages.TypeNoMess" style="color: white">
+        @messages.NotiMess
+    </div>
+}
