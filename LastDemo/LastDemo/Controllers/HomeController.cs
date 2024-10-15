@@ -14,9 +14,12 @@ namespace LastDemo.Controllers
         public ActionResult Index()
         {
             TESTEntities db = new TESTEntities();
+
             CategoriesDAO categoriesDAO = new CategoriesDAO();
             ViewBag.Categories = categoriesDAO.getList("Index");
+
             ViewBag.ClothingTypes = db.ClothingTypes.ToList();
+            ViewBag.Clothes = db.Clothes.ToList();
             return View();
         }
     }

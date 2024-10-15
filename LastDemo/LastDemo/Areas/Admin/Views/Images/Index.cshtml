@@ -1,0 +1,76 @@
+﻿@model IEnumerable<LastDemo.Models.Image>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Areas/Admin/Views/Shared/_LayoutAdmin.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ImageName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MainImage)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryImage1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryImage2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecondaryImage3)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.IsHidden)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Cloth.ClothesName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Color.ColorName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ImageName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MainImage)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryImage1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryImage2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecondaryImage3)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.IsHidden)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cloth.ClothesName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Color.ColorName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ImageID }) |
+            @Html.ActionLink("Details", "Details", new { id=item.ImageID }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ImageID })
+        </td>
+    </tr>
+}
+
+</table>

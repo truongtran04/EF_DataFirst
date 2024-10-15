@@ -23,6 +23,7 @@ namespace LastDemo.Models
     
         public string ClothesID { get; set; }
         public string ClothesName { get; set; }
+        public string MainImage { get; set; }
         public decimal Price { get; set; }
         public Nullable<decimal> PriceSale { get; set; }
         public string Description { get; set; }

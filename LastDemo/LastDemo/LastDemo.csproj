@@ -114,12 +114,15 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\css\LayoutHome.css" />
+    <Content Include="Content\css\Main.css" />
+    <Content Include="Content\css\Navbar.css" />
+    <Content Include="Content\css\Reposive.css" />
     <Content Include="Content\images\logo_2.png" />
     <Content Include="Global.asax" />
     <Content Include="Models\Shopping.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
-      <LastGenOutput>Shopping.Context.cs</LastGenOutput>
       <DependentUpon>Shopping.edmx</DependentUpon>
+      <LastGenOutput>Shopping.Context.cs</LastGenOutput>
     </Content>
     <Content Include="Models\Shopping.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -3938,12 +3941,15 @@
     <Compile Include="Areas\Admin\Controllers\ClothingTypesController.cs" />
     <Compile Include="Areas\Admin\Controllers\ColorsController.cs" />
     <Compile Include="Areas\Admin\Controllers\DashBoardController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ImagesController.cs" />
     <Compile Include="Areas\Admin\Controllers\SizesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Library\NotiMessage.cs" />
+    <Compile Include="Library\SelectItem.cs" />
+    <Compile Include="Library\XString.cs" />
     <Compile Include="Models\Category.cs">
       <DependentUpon>Shopping.tt</DependentUpon>
     </Compile>
@@ -4004,13 +4010,6 @@
     <Content Include="Content\bootstrap-grid.rtl.css.map" />
     <Content Include="Content\bootstrap-grid.min.css.map" />
     <Content Include="Content\bootstrap-grid.css.map" />
-    <EntityDeploy Include="Models\Shopping.edmx">
-      <Generator>EntityModelCodeGenerator</Generator>
-      <LastGenOutput>Shopping.Designer.cs</LastGenOutput>
-    </EntityDeploy>
-    <Content Include="Models\Shopping.edmx.diagram">
-      <DependentUpon>Shopping.edmx</DependentUpon>
-    </Content>
     <Content Include="Areas\Admin\Views\web.config" />
     <Content Include="Areas\Admin\Views\Shared\_LayoutAdmin.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_PartialSidebar.cshtml" />
@@ -4047,6 +4046,18 @@
     <Content Include="Areas\Admin\Views\Clothes\Details.cshtml" />
     <Content Include="Areas\Admin\Views\Clothes\Edit.cshtml" />
     <Content Include="Areas\Admin\Views\Clothes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Create.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Delete.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Details.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Edit.cshtml" />
+    <Content Include="Areas\Admin\Views\Images\Index.cshtml" />
+    <EntityDeploy Include="Models\Shopping.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Shopping.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <Content Include="Models\Shopping.edmx.diagram">
+      <DependentUpon>Shopping.edmx</DependentUpon>
+    </Content>
     <None Include="packages.config" />
     <Content Include="Scripts\bootstrap.min.js.map" />
     <Content Include="Scripts\bootstrap.js.map" />
@@ -4536,6 +4547,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Admin\Data\" />
+    <Folder Include="Content\images\clothes\nam\" />
+    <Folder Include="Content\images\clothes\nu\" />
     <Folder Include="Scripts\js\" />
   </ItemGroup>
   <ItemGroup>

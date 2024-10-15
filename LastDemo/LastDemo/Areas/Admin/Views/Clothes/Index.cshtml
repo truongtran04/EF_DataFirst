@@ -45,9 +45,9 @@
                     <thead>
                         <tr>
                             <th style="width: 10px">.#</th>
+                            <th style="width: 60px">Hình ảnh</th>
                             <th>Tên quần áo</th>
                             <th>Giá</th>
-                            <th>Danh mục</th>
                             <th>Ngày tạo</th>
                             <th>Chức năng</th>
                         </tr>
@@ -57,14 +57,17 @@
                         {
                             <tr>
                                 <td></td>
+                                <td class="text-center">
+                                    @{ 
+                                        string categoriesFolder = LastDemo.Library.SelectItem.CategoriesID(item.CategoryID);
+                                    }
+                                    <img src="~/Content/images/clothes/@categoriesFolder/@item.MainImage" class="img-fluid" style="width: 50px"/>
+                                </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.ClothesName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.Price)
-                                </td>
-                                <td>
-                                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
                                 </td>
                                 <td>
                                     @Html.DisplayFor(modelItem => item.CreatedAt)
